@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 #    djano-allauth
     'allauth',
     'allauth.account',
+    'rest_framework',
 ]
 
 SITE_ID = 1
