@@ -39,10 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'AuthenticateApp',
 #    djano-allauth
-    'allauth',
+    'allauth',  
     'allauth.account',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    # ...
+}
+
 
 SITE_ID = 1
 
@@ -57,8 +66,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'rest_framework.authtoken.middleware.TokenAuthenticationMiddleware',
 #    Add the account middleware:
     "allauth.account.middleware.AccountMiddleware",
+    
 ]
 
 ROOT_URLCONF = 'AuthenticateProject.urls'
