@@ -7,10 +7,10 @@ from django.http import HttpResponse
 # import local data
 """
 
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 #, permission_classes
 from rest_framework.response import Response
-# from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from .serializers import EmployeeSerializer
 from .models import *
 
@@ -26,7 +26,7 @@ class EmployeeViewSet(viewsets.ModelViewSet):
 """
 
 @api_view(['GET','POST'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def employee_list(request):
     if request.method == 'GET':
         employees = Employee.objects.all()
