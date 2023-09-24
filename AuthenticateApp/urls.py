@@ -28,7 +28,8 @@ urlpatterns = [
     path('my-login/',views.my_login, name="my-login"),
     path('dashboard/',views.dashboard, name="dashboard"),
     # path('', include(router.urls)),
-    path('api/employees/', views.employee_list, name='employee-list'),
+    path('api/employees/get-employee/', views.get_employee, name='get-employee'),
+    path('api/employees/create-employee/', views.create_employee, name='create-employee'),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
 
 ]

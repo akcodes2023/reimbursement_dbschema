@@ -25,17 +25,29 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     serializer_class = EmployeeSerializer
 """
 
-@api_view(['GET','POST'])
+@api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def employee_list(request):
+def get_employee(request):
     if request.method == 'GET':
         employees = Employee.objects.all()
         serializer = EmployeeSerializer(employees, many=True)
         return Response(serializer.data)
     
-    elif request.method == 'POST':
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def create_employee(request):
+    
+    if request.method == 'POST':
+        '''
+        # print(type(request.data))
+        '''
         # Handle POST request to create a new employee
         serializer = EmployeeSerializer(data=request.data)
+        '''
+        # print(type(serializer))
+        # print(serializer.initial_data)
+        '''
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=201)  # 201 Created
